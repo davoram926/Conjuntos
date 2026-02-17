@@ -12,14 +12,19 @@ Resultados esperados:
 - Solo frances: **30**
 
 ## Pendientes (en orden recomendado)
-
-1. Completar el TAD de conjuntos
+ 
+1. Completar el TAD de conjuntos.     🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢REALIZADO🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢
 - Archivo: `src/conjuntos/Conjuntos.java`
 - Implementar metodos faltantes:
   - `eliminar(T elemento)`
   - `interseccion(Conjuntos<T> set)`
   - `diferencia(Conjuntos<T> set)`
   - `subconjunto(Conjuntos<T> set)` (recomendado para dejarlo completo)
+
+
+
+
+
 
 2. Agregar metodo de cardinalidad
 - Archivo: `src/conjuntos/Conjuntos.java`
