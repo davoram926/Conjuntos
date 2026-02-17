@@ -49,7 +49,15 @@ public class Conjuntos<T> implements Conjuntable<T>, Iterator<T> {
 
     @Override
     public void eliminar(T elemento) {
-
+        int index = contiene(elemento);
+        if (index == -1) {
+            return;
+        }
+        for (int i = index; i < nElem - 1; i++) {
+            data[i] = data[i + 1];
+        }
+        data[nElem - 1] = null;
+        nElem--;
     }
 
     @Override
@@ -59,7 +67,7 @@ public class Conjuntos<T> implements Conjuntable<T>, Iterator<T> {
    //recursividad indirecta
                                  //
    public int contiene(T elemento,int index) {
-       if (index == data.length-1 || data[index] == null ) {//no lo encontre
+       if (index >= nElem) {//no lo encontre
            return -1;
        }
        if ( data[index].equals(elemento)) { //lo encontre
@@ -72,7 +80,7 @@ public class Conjuntos<T> implements Conjuntable<T>, Iterator<T> {
         Conjuntos<T> nuevo = new Conjuntos<T>(this);
         //a {13 5 7 3}   set { 5 3 20 2}
         // nuevo {13 5 7 3 }
-        for (int i = 0; i < set.data.length; i++) {
+        for (int i = 0; i < set.nElem; i++) {
             if (nuevo.contiene(set.data[i]) == -1) { //no esta
                 nuevo.agregar(set.data[i]); //lo agrego en nuevo
             }
@@ -82,17 +90,34 @@ public class Conjuntos<T> implements Conjuntable<T>, Iterator<T> {
 
     @Override
     public Conjuntos<T> interseccion(Conjuntos<T> set) {
-        return null;
+        Conjuntos<T> nuevo = new Conjuntos<T>();
+        for (int i = 0; i < nElem; i++) {
+            if (set.contiene(data[i]) != -1) {
+                nuevo.agregar(data[i]);
+            }
+        }
+        return nuevo;
     }
 
     @Override
     public Conjuntos<T> diferencia(Conjuntos<T> set) {
-        return null;
+        Conjuntos<T> nuevo = new Conjuntos<T>();
+        for (int i = 0; i < nElem; i++) {
+            if (set.contiene(data[i]) == -1) {
+                nuevo.agregar(data[i]);
+            }
+        }
+        return nuevo;
     }
 
     @Override
     public boolean subconjunto(Conjuntos<T> set) {
-        return false;
+        for (int i = 0; i < nElem; i++) {
+            if (set.contiene(data[i]) == -1) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
