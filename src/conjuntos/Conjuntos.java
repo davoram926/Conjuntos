@@ -149,6 +149,12 @@ public class Conjuntos<T> implements Conjuntable<T>, Iterator<T> {
         return nElem+" Elementos:"+cadena;
     }
 
+    // Retorna cuantos elementos tiene el conjunto actualmente
+    // Util para saber la cardinalidad sin depender de toString()
+    public int size() {
+        return nElem;
+    }
+
     public T[] getData() {
         return data;
     }
