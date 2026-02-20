@@ -1,4 +1,5 @@
 import conjuntos.Conjuntos;
+import recursividad.binario;
 
 void main() {
 
@@ -30,6 +31,8 @@ void main() {
 
 
     IO.println("Alumnos que estudian solo francés: " + res);
+
+    IO.println(binario.abinarios(4));
 
 
     IO.println(Arrays.toString(A.getData()));

@@ -9,13 +9,5 @@ public class binario {
         } else {
             return abinarios(entero / 2) + (entero % 2);
         }
-    } 
-
-
-    void main() {
-        IO.println(abinarios(5));
-        IO.println(abinarios(14));
     }
 }
-
-
