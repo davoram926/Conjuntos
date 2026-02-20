@@ -7,18 +7,20 @@ import java.util.NoSuchElementException;
 public class Conjuntos<T> implements Conjuntable<T>, Iterator<T> {
     //atributos
     private T[] data; //elemenos del conjunto
-    private int nElem,pos;
-    private static final int SIZE =20;
+    private int nElem, pos;
+    private static final int SIZE = 20;
 
     //constructores
     public Conjuntos() {
         this(SIZE);//llamada de constructor a constructor
     }
+
     public Conjuntos(int size) {
-        data = (T[]) new Object[ size>0 ? size : SIZE ];
-        Arrays.fill(data,null);
-        nElem =pos=0;
+        data = (T[]) new Object[size > 0 ? size : SIZE];
+        Arrays.fill(data, null);
+        nElem = pos = 0;
     }
+
     public Conjuntos(Conjuntos<T> set) {
         this.data = Arrays.copyOf(set.data, set.data.length);
         this.nElem = set.nElem;
@@ -27,24 +29,24 @@ public class Conjuntos<T> implements Conjuntable<T>, Iterator<T> {
 
     @Override
     public boolean vacio() {
-        return nElem==0;
+        return nElem == 0;
     }
 
     @Override
     public void limpia() {
-        Arrays.fill(data,null);
-        nElem =0;
+        Arrays.fill(data, null);
+        nElem = 0;
 
     }
 
     @Override
     public void agregar(T elemento) {
-            if (contiene(elemento) == -1) { //no esta el elemento
-                if (nElem >= data.length) {
-                    data = Arrays.copyOf(data, data.length + 1);
-                }
-                data[nElem++] = elemento;
+        if (contiene(elemento) == -1) { //no esta el elemento
+            if (nElem >= data.length) {
+                data = Arrays.copyOf(data, data.length + 1);
             }
+            data[nElem++] = elemento;
+        }
     }
 
     @Override
@@ -62,19 +64,21 @@ public class Conjuntos<T> implements Conjuntable<T>, Iterator<T> {
 
     @Override
     public int contiene(T elemento) {
-        return contiene(elemento,0);
+        return contiene(elemento, 0);
     }
-   //recursividad indirecta
-                                 //
-   public int contiene(T elemento,int index) {
-       if (index >= nElem) {//no lo encontre
-           return -1;
-       }
-       if ( data[index].equals(elemento)) { //lo encontre
-           return index;
-       }
-       return contiene(elemento,index+1); //busco de nuevo
-   }
+
+    //recursividad indirecta
+    //
+    public int contiene(T elemento, int index) {
+        if (index >= nElem) {//no lo encontre
+            return -1;
+        }
+        if (data[index].equals(elemento)) { //lo encontre
+            return index;
+        }
+        return contiene(elemento, index + 1); //busco de nuevo
+    }
+
     @Override
     public Conjuntos<T> union(Conjuntos<T> set) {
         Conjuntos<T> nuevo = new Conjuntos<T>(this);
@@ -139,14 +143,14 @@ public class Conjuntos<T> implements Conjuntable<T>, Iterator<T> {
 
         this.pos = 0;
 
-        while (this.hasNext()){
+        while (this.hasNext()) {
             T tmp = this.next();
-            cadena.append(" "+tmp.toString());
+            cadena.append(" " + tmp.toString());
         }
 
         this.pos = 0;
 
-        return nElem+" Elementos:"+cadena;
+        return nElem + " Elementos:" + cadena;
     }
 
     // Retorna cuantos elementos tiene el conjunto actualmente

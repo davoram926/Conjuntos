@@ -1,3 +1,5 @@
+package recursividad;
+
 public class binario {
     
 
@@ -10,11 +12,10 @@ public class binario {
     } 
 
 
-    public static void main(String[] args) {
-        System.out.println(abinarios(5));
-        System.out.println(abinarios(14));
+    void main() {
+        IO.println(abinarios(5));
+        IO.println(abinarios(14));
     }
-
 }
 
 
